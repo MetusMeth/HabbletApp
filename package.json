@@ -1,0 +1,62 @@
+{
+  "name": "habblet",
+  "productName": "Habblet",
+  "debug": false,
+  "version": "1.0.2",
+  "clientId": 821791811172957,
+  "main": "app.js",
+  "description": "Habblet: Faça amigos, construa seu quarto, converse e seja famoso!",
+  "homepage": "https://www.habblet.ws",
+  "author": {
+    "name": "Asteroid Games",
+    "email": "contact@habblet.ws"
+  },
+  "scripts": {
+    "start": "electron .",
+    "publish": "electron-builder --win -p always",
+    "build": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "11.1.0",
+    "electron-builder": "22.9.1"
+  },
+  "dependencies": {
+    "electron-updater": "4.3.5"
+  },
+  "build": {
+    "appId": "ws.habblet.app",
+    "extraResources": [
+      "./flash/**"
+    ],
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "metusmeth",
+        "repo": "habbletapp"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "uninstallDisplayName": "Habblet",
+      "oneClick": true,
+      "perMachine": false,
+      "artifactName": "Habblet-${version}.${ext}"
+    }
+  }
+}
